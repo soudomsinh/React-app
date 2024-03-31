@@ -1,0 +1,18 @@
+[submodule "basic-react-app"]
+	path = basic-react-app
+	url = https://github.com/soudomsinh/React-app.git
+[submodule "foo-react-app"]
+	path = foo-react-app
+	url = https://github.com/soudomsinh/React-app.git
+[submodule "my-app"]
+	path = my-app
+	url = https://github.com/soudomsinh/React-app.git
+[submodule "pomodoro"]
+	path = pomodoro
+	url = https://github.com/soudomsinh/React-app.git
+[submodule "react-basic"]
+	path = react-basic
+	url = https://github.com/soudomsinh/React-app.git
+[submodule "reactApp-calculator"]
+	path = reactApp-calculator
+	url = https://github.com/soudomsinh/React-app.git
