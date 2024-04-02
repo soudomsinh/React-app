@@ -12,6 +12,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Avatar from '@mui/material/Avatar';
+import Link from '@mui/material/Link';
+
+
 
 export default function Users() {
     const [items, setItems] = useState([]);
@@ -38,7 +41,9 @@ export default function Users() {
                     </Typography>
                 </Box>
                 <Box>
+                  <Link href="create">
                     <Button variant="contained">Create</Button>
+                  </Link>
                 </Box>
             </Box>
             <TableContainer component={Paper}>
@@ -51,7 +56,6 @@ export default function Users() {
                         <TableCell align="right">Last Name</TableCell>
                         <TableCell align="right">Username</TableCell>
                         <TableCell align="right">Action</TableCell>
-
                     </TableRow>
                     </TableHead>
                     <TableBody>
