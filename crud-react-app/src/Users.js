@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import { Paper } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -19,6 +20,9 @@ import Link from '@mui/material/Link';
 export default function Users() {
     const [items, setItems] = useState([]);
     useEffect(() => {
+        UserGet()
+    }, [])
+    const UserGet = () =>{
         fetch("https://www.melivecode.com/api/users")
           .then(res => res.json())
           .then(
@@ -27,8 +31,34 @@ export default function Users() {
               setItems(result);
             }
           )
-    }, [])
+    }
     
+    const UserDelete = id =>{
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+        "id": id
+        });
+
+        const requestOptions = {
+        method: "DELETE",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+        };
+
+        fetch("https://www.melivecode.com/api/users/delete", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            alert(result['message'])
+            if(result['status']==='ok'){
+                UserGet()
+            }
+        })
+        .catch((error) => console.error(error));
+    }
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -75,8 +105,12 @@ export default function Users() {
                         <TableCell align="right">{row.fname}</TableCell>
                         <TableCell align="right">{row.lname}</TableCell>
                         <TableCell align="right">{row.username}</TableCell>
-                        <TableCell align="right"></TableCell>
-
+                        <TableCell align="right">
+                            <ButtonGroup variant="outlined" aria-label="outlined button group">
+                                <Button>Edit</Button>
+                                <Button onClick={()=>UserDelete(row.id)}>Delete</Button>
+                            </ButtonGroup>
+                        </TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
