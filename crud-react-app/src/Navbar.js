@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 // import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import {Link} from 'react-router-dom';
 
 export default function Navbar() {
   return (
@@ -25,9 +26,9 @@ export default function Navbar() {
             CRUD APP
           </Typography>
           <Typography>
-            <a href='./'>Home</a>
+            <Link to="/users">Home</Link>
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
+          
         </Toolbar>
       </AppBar>
     </Box>
